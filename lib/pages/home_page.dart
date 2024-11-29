@@ -6,7 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'GitHub Repositories',
+      title: 'Consumo de API - GitHub',
       theme: ThemeData(
         primarySwatch: Colors.blue, 
         colorScheme: const ColorScheme(
@@ -32,12 +32,14 @@ class RepoPage extends StatelessWidget {
 
   RepoPage({super.key});
 
+  
+
   @override
   Widget build(BuildContext context) {
     final repoProvider = Provider.of<RepoProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('GitHub Repositories')),
+      appBar: AppBar(title: const Text('Repositórios GitHub')),
       body: Column(
         children: [
           Padding(
@@ -46,7 +48,7 @@ class RepoPage extends StatelessWidget {
               onFieldSubmitted: (_) => repoProvider.fetchRepos(_controller.text.trim()),
               controller: _controller,
               decoration: InputDecoration(
-                labelText: 'GitHub Username',
+                labelText: 'GitHub User Name',
                 suffixIcon: IconButton(
                   icon:const Icon(Icons.search),
                   onPressed: () {
@@ -73,7 +75,7 @@ class RepoPage extends StatelessWidget {
                   final repo = repoProvider.repos[index];
                   return ListTile(
                     title: Text(repo['name']),
-                    subtitle: Text(repo['description'] ?? 'No description'),
+                    subtitle: Text(repo['description'] ?? 'Sem descrição'),
                     trailing: const Icon(Icons.code),
                     onTap: () => print(repo['html_url']),
                   );

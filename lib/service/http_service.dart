@@ -10,7 +10,11 @@ class GitHubService {
 
     if (response.statusCode == 200) {
       return jsonDecode(response.body);
-    } else {
+    } 
+    else if(response.statusCode == 404){
+      throw Exception('Página não encontrada');
+    }
+    else {
       throw Exception('Failed to fetch repositories');
     }
   }
